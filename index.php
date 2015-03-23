@@ -94,7 +94,7 @@ $types = array (
             <br>
         <form method="post" action="<?= $_SERVER['PHP_SELF']?>">
             <p>Enter the card number :</p>
-            <input type="number" name="cardno" max="99999999999999999">
+            <input type="number" name="cardno" max="99999999999999999999">
 
             <br>
             <br>
@@ -137,10 +137,6 @@ foreach ($types as $key => $value) {
             default :
                 $type = "(LASER (UNKNOWN DIGITS)";
         }
-
-        if ($strlen == 16) {
-            $type = "LASER (16 DIGITS)";
-        }
     } //'6304', '6706', '6709', '6771'
 }
 
@@ -172,6 +168,20 @@ else if ($strlen == 17) {
     $part3 = substr($cardno, 5, 4);
     $part4 = substr($cardno, 9, 4);
     $part5 = substr($cardno, 13, 4);
+}
+else if ($strlen == 18) {
+    $part1 = substr($cardno, 0, 2);
+    $part2 = substr($cardno, 2, 4);
+    $part3 = substr($cardno, 6, 4);
+    $part4 = substr($cardno, 10, 4);
+    $part5 = substr($cardno, 14, 4);
+}
+else if ($strlen == 19) {
+    $part1 = substr($cardno, 0, 3);
+    $part2 = substr($cardno, 3, 4);
+    $part3 = substr($cardno, 7, 4);
+    $part4 = substr($cardno, 11, 4);
+    $part5 = substr($cardno, 15, 4);
 }
 
 $formatNo = $part1.'-'.$part2.'-'.$part3.'-'.$part4;
