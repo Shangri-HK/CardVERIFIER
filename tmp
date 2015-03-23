@@ -1,0 +1,19 @@
+$types = array (
+"visa" => array('4024', '4485', '4532', '4539', '4556', '4716', '4916', '4929'), /* 13 or 16 digits*/
+"visaElectron" => array('4026', '4175', '4508', '4844', '4913', '4917'), // 16 digits
+"voyager" => array('8699'), // 15 digits
+"masterCard" => array('51', '52', '53', '54', '55'), // 16 digits
+"laser16" => array('6304', '6706', '6709', '6771'), // 16 digits
+"laser17" => array('6304', '6706', '6709', '6771'), // 17 digits
+"laser18" => array('6304', '6706', '6709', '6771'), // 18 digits
+"laser19" => array('6304', '6706', '6709', '6771'), // 19 digits
+"jcbCoInc15" => array('1800', '2100'), // 15 digits
+"jcbCoInc16" => array('3088', '3096', '3112', '3158', '3337', '3528'), // 16 digits
+"instaPayment" => array('637', '638', '639'), // 16 digits
+"enRoute" => array('2014', '2149'), // 15 digits
+"discover" => array('6011', '644', '645', '646', '647', '649', '65'), // 16 digits
+"dinerClubUSACA" => array('54'), // 16 digits
+"dinerClubInternational" => array('36', '38'), // 14 digits
+"dinerClubCarteBlanche" => array('300', '301', '302', '303', '304', '305'), // 14 digits
+"amex" => array('34', '37'), // 15 digits
+)
