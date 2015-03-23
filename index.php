@@ -109,7 +109,7 @@ $type='null';
 if (!empty($_POST['submit'])) {
     $submit = $_POST['submit'];
 }
-
+//
 if (isset($submit)) { /*process*/
     $cardno = $_POST['cardno'];
 
