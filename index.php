@@ -83,18 +83,9 @@ $types = array (
 
         <h2>VERIFY A CARD NUMBER NOW !</h2>
         <br>
-
-            <p>Select the type :</p>
-            <img src="visa.png" width="140" height="90">
-            <img src="mastercard.png" width="140" height="90">
-            <img src="amex.png" width="140" height="90">
-
-            <br>
-            <br>
-            <br>
-        <form method="post" action="<?= $_SERVER['PHP_SELF']?>">
-            <p>Enter the card number :</p>
-            <input type="number" name="cardno" max="99999999999999999999">
+        <form class="form-group" method="post" action="<?= $_SERVER['PHP_SELF']?>">
+            <label for="cardno">Enter the card number :</label>
+            <input class="form-control input-lg" id="cardno" type="text" name="cardno" value="<?php echo (isset($_POST['cardno'])) ? $_POST['cardno'] : ''?>">
 
             <br>
             <br>
@@ -114,36 +105,61 @@ if (isset($submit)) { /*process*/
     $cardno = $_POST['cardno'];
 
 $strlen = strlen($cardno); // Card number's Length
-$prefix2 = substr($cardno, 0, 4); // Card number's prefix
+$prefix2 = substr($cardno, 0, 2); // Card number's prefix (2dgt)
+$prefix3 = substr($cardno, 0, 3); // Card number's prefix (3dgt)
+$prefix4 = substr($cardno, 0, 4); // Card number's prefix (4dgt)
 
 foreach ($types as $key => $value) {
-    if (in_array($prefix2, $value))
-        $type = strtoupper($key); // Return the card type
-
-    if ($prefix2 == "6304" || $prefix2 == "6706" || $prefix2 == "6709" || $prefix2 == "6771") {
-        switch ($strlen) {
-            case 16 :
-                $type = "LASER (16 DIGITS)";
-                break;
-            case 17 :
-                $type = "LASER (17 DIGITS)";
-                break;
-            case 18 :
-                $type = "LASER (18 DIGITS)";
-                break;
-            case 19 :
-                $type = "LASER (19 DIGITS)";
-                break;
-            default :
-                $type = "(LASER (UNKNOWN DIGITS)";
-        }
-    } //'6304', '6706', '6709', '6771'
+    if (in_array($prefix2, $value)) { //Test Retrieving with prefix 2 DGTS
+        $type = strtoupper($key); // Assign type
+        $dispPrefix = $prefix2;
+    }
+    else if (in_array($prefix3, $value)) { //If type no found, try with 3 DGTS
+        $type = strtoupper($key); // Assign type
+        $dispPrefix = $prefix3;
+    }
+    else if (in_array($prefix4, $value)) {
+        $type = strtoupper($key); // Assign type
+        $dispPrefix = $prefix4;
+        if ($prefix4 == "6304" || $prefix4 == "6706" || $prefix4 == "6709" || $prefix4 == "6771") {
+            switch ($strlen) { //LASER X DGTS
+                case 16 :
+                    $type = "LASER (16 DIGITS)";
+                    break;
+                case 17 :
+                    $type = "LASER (17 DIGITS)";
+                    break;
+                case 18 :
+                    $type = "LASER (18 DIGITS)";
+                    break;
+                case 19 :
+                    $type = "LASER (19 DIGITS)";
+                    break;
+                default :
+                    $type = "(LASER (UNKNOWN DIGITS)";
+            }
+    }
+    }
 }
 
 $luhnDgt = substr($cardno, -1, 1); // Luhn Digit Check (last)
 
-if ($strlen ==  15) {
-    if ($type == "ENROUTE" || $type == "JCB CO INC (15 DIGITS)" || $type == "VOYAGER") {
+if ($strlen == 14) {
+    if ($type == "DINER CLUB (CARTE BLANCHE)") {
+        $part1 = substr($cardno, 0, 3);
+        $part2 = substr($cardno, 3, 4);
+        $part3 = substr($cardno, 7, 4);
+        $part4 = substr($cardno, 11, 4);
+    }
+    else {
+        $part1 = substr($cardno, 0, 2);
+        $part2 = substr($cardno, 2, 4);
+        $part3 = substr($cardno, 6, 4);
+        $part4 = substr($cardno, 10, 4);
+    }
+}
+else if ($strlen ==  15) {
+    if ($type == "ENROUTE" || $type == "JCB CO INC (15 DIGITS)" || $type == "VOYAGER" || $type = "AMERICAN EXPRESS") {
         $part1 = substr($cardno, 0, 4);
         $part2 = substr($cardno, 4, 4);
         $part3 = substr($cardno, 8, 4);
@@ -177,11 +193,11 @@ else if ($strlen == 18) {
     $part5 = substr($cardno, 14, 4);
 }
 else if ($strlen == 19) {
-    $part1 = substr($cardno, 0, 3);
-    $part2 = substr($cardno, 3, 4);
-    $part3 = substr($cardno, 7, 4);
-    $part4 = substr($cardno, 11, 4);
-    $part5 = substr($cardno, 15, 4);
+    $part1 = substr($cardno, 0, 4);
+    $part2 = substr($cardno, 4, 4);
+    $part3 = substr($cardno, 8, 4);
+    $part4 = substr($cardno, 12, 4);
+    $part5 = substr($cardno, 16, 3);
 }
 
 $formatNo = $part1.'-'.$part2.'-'.$part3.'-'.$part4;
@@ -190,16 +206,20 @@ if (isset($part5))
     $formatNo .= '-'.$part5;
 
 if ($strlen < 1) {
-    echo '<h2>Error : card number is too short !</h2>';
+    echo '<h2 class="alert alert-danger">
+        <span class="glyphicon glyphicon-remove"></span>
+        Error : card number is too short !</h2>';
     die;
 }
 
 
     if(is_valid_luhn($cardno) == false) {
         ?>
-        <h3>INVALID CARD NUMBER !</h3>
+        <h3><?= $formatNo  ?></h3>
+        <h3 class="alert alert-danger">
+            <span class="glyphicon glyphicon-remove"></span> INVALID CARD NUMBER !</h3>
 
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!-- <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
@@ -213,13 +233,15 @@ if ($strlen < 1) {
 
                     </div>
                 </div>
-            </div>
+            </div> -->
         <?php
     }
     else if (is_valid_luhn($cardno) == true) {
         ?>
         <h3><?= $formatNo ?></h3>
-        <h3>VALID CARD NUMBER !</h3>
+        <h3  class="alert alert-success">
+            <span class="glyphicon glyphicon-ok"></span>
+            VALID CARD NUMBER !</h3>
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -251,7 +273,7 @@ if ($strlen < 1) {
                                 </tr>
                                 <tr>
                                     <th><strong>Prefix : </strong></th>
-                                    <td><?= $prefix2 ?></td>
+                                    <td><?= $dispPrefix ?></td>
                                 </tr>
                             </table>
                         </div>
