@@ -108,18 +108,16 @@ $prefix2 = substr($cardno, 0, 2); // Card number's prefix (2dgt)
 $prefix3 = substr($cardno, 0, 3); // Card number's prefix (3dgt)
 $prefix4 = substr($cardno, 0, 4); // Card number's prefix (4dgt)
 
-//QUERY DB
-$result = db_query($mysqli, $prefix2, $digits);
-$row = $result->fetch_array(MYSQLI_BOTH);
+$i = 2;
 
-if (empty($row)) {
-    $result = db_query($mysqli, $prefix3, $digits);
+//QUERY DB
+while (empty($row)) {
+    $prefix = substr($cardno, 0, $i);
+    $result = db_query($mysqli, $prefix, $digits);
     $row = $result->fetch_array(MYSQLI_BOTH);
-    if (empty($row)) {
-        $result = db_query($mysqli, $prefix4, $digits);
-        $row = $result->fetch_array(MYSQLI_BOTH);
-    }
+    $i++;
 }
+
 
 $luhnDgt = substr($cardno, -1, 1); // Luhn Digit Check (last)
 
