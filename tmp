@@ -34,7 +34,7 @@ DINER CLUB CARTE BLANCHE  : 30023698746308
 VOYAGER                   : 869912365631981
 JCB CO INC 15             : 180023156320153
 EN ROUTE                  : 201436521987639
-AMEX                      : 342569874631029
+AMEX                      : 342569874631022
 =======================
 ********16 DGTS********
 =======================
@@ -62,3 +62,106 @@ LASER 19                  : 6304123698753215691
 
 63041236987532 15691
 63041236987532 20000
+
+
+
+
+
+
+
+foreach ($types as $key => $value) {
+    if (in_array($prefix2, $value)) { //Test Retrieving with prefix 2 DGTS
+        $type = strtoupper($key); // Assign type
+        $dispPrefix = $prefix2;
+    }
+    else if (in_array($prefix3, $value)) { //If type no found, try with 3 DGTS
+        $type = strtoupper($key); // Assign type
+        $dispPrefix = $prefix3;
+    }
+    else if (in_array($prefix4, $value)) {
+        $type = strtoupper($key); // Assign type
+        $dispPrefix = $prefix4;
+        if ($prefix4 == "6304" || $prefix4 == "6706" || $prefix4 == "6709" || $prefix4 == "6771") {
+            switch ($digits) { //LASER X DGTS
+                case 16 :
+                    $type = "LASER (16 DIGITS)";
+                    break;
+                case 17 :
+                    $type = "LASER (17 DIGITS)";
+                    break;
+                case 18 :
+                    $type = "LASER (18 DIGITS)";
+                    break;
+                case 19 :
+                    $type = "LASER (19 DIGITS)";
+                    break;
+                default :
+                    $type = "(LASER (UNKNOWN DIGITS)";
+            }
+    }
+    }
+}
+
+
+
+
+if ($digits == 14) {
+    if ($type == "DINER CLUB (CARTE BLANCHE)") {
+        $part1 = substr($cardno, 0, 3);
+        $part2 = substr($cardno, 3, 4);
+        $part3 = substr($cardno, 7, 4);
+        $part4 = substr($cardno, 11, 4);
+    }
+    else {
+        $part1 = substr($cardno, 0, 2);
+        $part2 = substr($cardno, 2, 4);
+        $part3 = substr($cardno, 6, 4);
+        $part4 = substr($cardno, 10, 4);
+    }
+}
+else if ($digits ==  15) {
+    if ($type == "ENROUTE" || $type == "JCB CO INC (15 DIGITS)" || $type == "VOYAGER" || $type = "AMERICAN EXPRESS") {
+        $part1 = substr($cardno, 0, 4);
+        $part2 = substr($cardno, 4, 4);
+        $part3 = substr($cardno, 8, 4);
+        $part4 = substr($cardno, 12, 3);
+    }
+    else {
+        $part1 = substr($cardno, 0, 3);
+        $part2 = substr($cardno, 3, 4);
+        $part3 = substr($cardno, 7, 4);
+        $part4 = substr($cardno, 11, 4);
+    }
+}
+else if ($digits == 16) {
+    $part1 = substr($cardno, 0, 4);
+    $part2 = substr($cardno, 4, 4);
+    $part3 = substr($cardno, 8, 4);
+    $part4 = substr($cardno, 12, 4);
+}
+else if ($digits == 17) {
+    $part1 = substr($cardno, 0, 1);
+    $part2 = substr($cardno, 1, 4);
+    $part3 = substr($cardno, 5, 4);
+    $part4 = substr($cardno, 9, 4);
+    $part5 = substr($cardno, 13, 4);
+}
+else if ($digits == 18) {
+    $part1 = substr($cardno, 0, 2);
+    $part2 = substr($cardno, 2, 4);
+    $part3 = substr($cardno, 6, 4);
+    $part4 = substr($cardno, 10, 4);
+    $part5 = substr($cardno, 14, 4);
+}
+else if ($digits == 19) {
+    $part1 = substr($cardno, 0, 4);
+    $part2 = substr($cardno, 4, 4);
+    $part3 = substr($cardno, 8, 4);
+    $part4 = substr($cardno, 12, 4);
+    $part5 = substr($cardno, 16, 3);
+}
+
+$formatNo = $part1.'-'.$part2.'-'.$part3.'-'.$part4;
+
+if (isset($part5))
+    $formatNo .= '-'.$part5;

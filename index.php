@@ -6,6 +6,21 @@
  * Time: 09:10
  */
 
+function db_connect() {
+    $mysqli = new mysqli("localhost", "root", "", "cardverifier");
+    if ($mysqli->connect_errno) {
+        echo "Echec lors de la connexion à MySQL : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+
+    return $mysqli;
+}
+
+function db_query($mysqli, $prefix, $digits) {
+    $query = "Select * FROM cards WHERE prefix = ".$prefix." AND digits = ".$digits.";";
+    $result = $mysqli->query($query);
+
+    return $result;
+}
 
 
 function is_valid_luhn($number) {
@@ -94,118 +109,44 @@ $types = array (
         </form>
 <br>
 <?php
+//CONNECTION DB
+$mysqli = db_connect();
 
-$type='null';
-
+//VERIF FORM
 if (!empty($_POST['submit'])) {
     $submit = $_POST['submit'];
 }
 
 if (isset($submit)) { /*process*/
-    $cardno = $_POST['cardno'];
+$cardno = $_POST['cardno'];
 
-$strlen = strlen($cardno); // Card number's Length
+//DETECT CARD LENGTH & PREFIXES
+$digits = strlen($cardno);
 $prefix2 = substr($cardno, 0, 2); // Card number's prefix (2dgt)
 $prefix3 = substr($cardno, 0, 3); // Card number's prefix (3dgt)
 $prefix4 = substr($cardno, 0, 4); // Card number's prefix (4dgt)
 
-foreach ($types as $key => $value) {
-    if (in_array($prefix2, $value)) { //Test Retrieving with prefix 2 DGTS
-        $type = strtoupper($key); // Assign type
-        $dispPrefix = $prefix2;
-    }
-    else if (in_array($prefix3, $value)) { //If type no found, try with 3 DGTS
-        $type = strtoupper($key); // Assign type
-        $dispPrefix = $prefix3;
-    }
-    else if (in_array($prefix4, $value)) {
-        $type = strtoupper($key); // Assign type
-        $dispPrefix = $prefix4;
-        if ($prefix4 == "6304" || $prefix4 == "6706" || $prefix4 == "6709" || $prefix4 == "6771") {
-            switch ($strlen) { //LASER X DGTS
-                case 16 :
-                    $type = "LASER (16 DIGITS)";
-                    break;
-                case 17 :
-                    $type = "LASER (17 DIGITS)";
-                    break;
-                case 18 :
-                    $type = "LASER (18 DIGITS)";
-                    break;
-                case 19 :
-                    $type = "LASER (19 DIGITS)";
-                    break;
-                default :
-                    $type = "(LASER (UNKNOWN DIGITS)";
-            }
-    }
-    }
-}
+//QUERY DB
+$result = db_query($mysqli, $prefix2, $digits);
+
+$row = $result->fetch_array(MYSQLI_BOTH);
+$row_cnt = $result->num_rows;
+
+
+
+
+
+
+$type='null';
+
+
+
+
 
 $luhnDgt = substr($cardno, -1, 1); // Luhn Digit Check (last)
 
-if ($strlen == 14) {
-    if ($type == "DINER CLUB (CARTE BLANCHE)") {
-        $part1 = substr($cardno, 0, 3);
-        $part2 = substr($cardno, 3, 4);
-        $part3 = substr($cardno, 7, 4);
-        $part4 = substr($cardno, 11, 4);
-    }
-    else {
-        $part1 = substr($cardno, 0, 2);
-        $part2 = substr($cardno, 2, 4);
-        $part3 = substr($cardno, 6, 4);
-        $part4 = substr($cardno, 10, 4);
-    }
-}
-else if ($strlen ==  15) {
-    if ($type == "ENROUTE" || $type == "JCB CO INC (15 DIGITS)" || $type == "VOYAGER" || $type = "AMERICAN EXPRESS") {
-        $part1 = substr($cardno, 0, 4);
-        $part2 = substr($cardno, 4, 4);
-        $part3 = substr($cardno, 8, 4);
-        $part4 = substr($cardno, 12, 3);
-    }
-    else {
-        $part1 = substr($cardno, 0, 3);
-        $part2 = substr($cardno, 3, 4);
-        $part3 = substr($cardno, 7, 4);
-        $part4 = substr($cardno, 11, 4);
-    }
-}
-else if ($strlen == 16) {
-    $part1 = substr($cardno, 0, 4);
-    $part2 = substr($cardno, 4, 4);
-    $part3 = substr($cardno, 8, 4);
-    $part4 = substr($cardno, 12, 4);
-}
-else if ($strlen == 17) {
-    $part1 = substr($cardno, 0, 1);
-    $part2 = substr($cardno, 1, 4);
-    $part3 = substr($cardno, 5, 4);
-    $part4 = substr($cardno, 9, 4);
-    $part5 = substr($cardno, 13, 4);
-}
-else if ($strlen == 18) {
-    $part1 = substr($cardno, 0, 2);
-    $part2 = substr($cardno, 2, 4);
-    $part3 = substr($cardno, 6, 4);
-    $part4 = substr($cardno, 10, 4);
-    $part5 = substr($cardno, 14, 4);
-}
-else if ($strlen == 19) {
-    $part1 = substr($cardno, 0, 4);
-    $part2 = substr($cardno, 4, 4);
-    $part3 = substr($cardno, 8, 4);
-    $part4 = substr($cardno, 12, 4);
-    $part5 = substr($cardno, 16, 3);
-}
 
-$formatNo = $part1.'-'.$part2.'-'.$part3.'-'.$part4;
-
-if (isset($part5))
-    $formatNo .= '-'.$part5;
-
-if ($strlen < 1) {
+if ($digits < 1) {
     echo '<h2 class="alert alert-danger">
         <span class="glyphicon glyphicon-remove"></span>
         Error : card number is too short !</h2>';
@@ -215,7 +156,7 @@ if ($strlen < 1) {
 
     if(is_valid_luhn($cardno) == false) {
         ?>
-        <h3><?= $formatNo  ?></h3>
+        <h3>xTODO</h3>
         <h3 class="alert alert-danger">
             <span class="glyphicon glyphicon-remove"></span> INVALID CARD NUMBER !</h3>
 
@@ -238,7 +179,7 @@ if ($strlen < 1) {
     }
     else if (is_valid_luhn($cardno) == true) {
         ?>
-        <h3><?= $formatNo ?></h3>
+        <h3>xTODO</h3>
         <h3  class="alert alert-success">
             <span class="glyphicon glyphicon-ok"></span>
             VALID CARD NUMBER !</h3>
@@ -257,15 +198,15 @@ if ($strlen < 1) {
                             <table class="table table-hover">
                                 <tr>
                                     <th><strong>Card Length : </strong></th>
-                                    <td><?= $strlen ?> Digits</td>
+                                    <td><?= $digits ?> Digits</td>
                                 </tr>
                                 <tr>
                                     <th><strong>Card Type : </strong></th>
-                                    <td><?= $type ?></td>
+                                    <td><?= $row['label'] ?></td>
                                 </tr>
                                 <tr>
                                     <th><strong>Formatted : </strong></th>
-                                    <td><?= $formatNo ?></td>
+                                    <td>xTODO</td>
                                 </tr>
                                 <tr>
                                     <th><strong>Luhn Digit : </strong></th>
@@ -273,13 +214,16 @@ if ($strlen < 1) {
                                 </tr>
                                 <tr>
                                     <th><strong>Prefix : </strong></th>
-                                    <td><?= $dispPrefix ?></td>
+                                    <td><?= $row['prefix'] ?></td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
         <?php
+
+        $result->free();
+        $mysqli->close();
     }
 }
 

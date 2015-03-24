@@ -19,6 +19,29 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="tmp" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/tmp">
+                <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+                  <state />
+                </provider>
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.49947423" vertical-offset="137" max-vertical-offset="2924">
+                    <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="CardVERIFIER" />
@@ -28,57 +51,20 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8095238" vertical-offset="3417" max-vertical-offset="5015">
-              <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.41051453" vertical-offset="2047" max-vertical-offset="4063">
+              <caret line="142" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="233" selection-end-column="7" />
               <folding>
                 <element signature="e#6#90#0#PHP" expanded="true" />
-                <marker date="1427107961811" expanded="true" signature="7103:7208" placeholder="..." />
+                <marker date="1427204951625" expanded="true" signature="420:454" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="420:457" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="420:479" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="420:480" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="420:481" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="420:493" placeholder="Select * FRO..cards..." />
+                <marker date="1427204951625" expanded="true" signature="4798:4903" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="onetime-pricing.php" pinned="false" current-in-tab="false">
-        <entry file="file://E:/HiMedia/html/onetime-pricing/onetime-pricing.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.072727" vertical-offset="6746" max-vertical-offset="29580">
-              <caret line="410" column="41" selection-start-line="410" selection-start-column="34" selection-end-line="410" selection-end-column="41" />
-              <folding>
-                <marker date="1426007288000" expanded="true" signature="24191:24532" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="24309:24482" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="24357:24477" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="39901:40238" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="40019:40188" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="40067:40183" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="46967:47304" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="47085:47254" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="47133:47249" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="64416:64497" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="64844:65055" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="68362:68700" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="68480:68650" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="68528:68645" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="81865:82200" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="81983:82150" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="82031:82145" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="88099:88427" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="88211:88381" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="88261:88376" placeholder="..." />
-                <marker date="1426007288000" expanded="true" signature="102879:102948" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tmp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tmp">
-          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.0" vertical-offset="463" max-vertical-offset="1173">
-              <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="47" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -88,8 +74,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tmp" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/tmp" />
       </list>
     </option>
   </component>
@@ -100,8 +86,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -201,7 +187,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -216,13 +202,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -248,11 +234,79 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5015">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+            <marker date="1427204951625" expanded="true" signature="420:454" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:457" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:479" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:480" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:481" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:493" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="4798:4903" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1173">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4386">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+            <marker date="1427204951625" expanded="true" signature="420:454" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:457" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:479" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:480" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:481" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:493" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="4798:4903" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="408">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4641">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#90#0#PHP" expanded="true" />
-            <marker date="1427107961811" expanded="true" signature="7103:7208" placeholder="..." />
+            <marker date="1427204951625" expanded="true" signature="420:454" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:457" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:479" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:480" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:481" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:493" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="4798:4903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -274,7 +328,15 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6#90#0#PHP" expanded="true" />
-            <marker date="1427107961811" expanded="true" signature="7103:7208" placeholder="..." />
+            <marker date="1427204951625" expanded="true" signature="420:454" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:457" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:479" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:480" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:481" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:493" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="4798:4903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -287,53 +349,31 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tmp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.0" vertical-offset="463" max-vertical-offset="1173">
-          <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://E:/HiMedia/html/onetime-pricing/onetime-pricing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.072727" vertical-offset="6746" max-vertical-offset="29580">
-          <caret line="410" column="41" selection-start-line="410" selection-start-column="34" selection-end-line="410" selection-end-column="41" />
-          <folding>
-            <marker date="1426007288000" expanded="true" signature="24191:24532" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="24309:24482" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="24357:24477" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="39901:40238" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="40019:40188" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="40067:40183" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="46967:47304" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="47085:47254" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="47133:47249" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="64416:64497" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="64844:65055" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="68362:68700" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="68480:68650" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="68528:68645" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="81865:82200" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="81983:82150" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="82031:82145" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="88099:88427" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="88211:88381" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="88261:88376" placeholder="..." />
-            <marker date="1426007288000" expanded="true" signature="102879:102948" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.49947423" vertical-offset="137" max-vertical-offset="2924">
+          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8095238" vertical-offset="3417" max-vertical-offset="5015">
-          <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.41051453" vertical-offset="2047" max-vertical-offset="4063">
+          <caret line="142" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="233" selection-end-column="7" />
           <folding>
             <element signature="e#6#90#0#PHP" expanded="true" />
-            <marker date="1427107961811" expanded="true" signature="7103:7208" placeholder="..." />
+            <marker date="1427204951625" expanded="true" signature="420:454" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:457" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:466" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:479" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:480" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:481" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="420:493" placeholder="Select * FRO..cards..." />
+            <marker date="1427204951625" expanded="true" signature="4798:4903" placeholder="..." />
           </folding>
         </state>
       </provider>
