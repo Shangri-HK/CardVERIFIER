@@ -52,6 +52,10 @@ function is_valid_luhn($number) {
             margin-top: 70px;
         }
 
+        body {
+            font-family : "Lucida Sans Unicode", "Arial";
+        }
+
     </style>
     <meta charset="UTF-8">
 </head>
@@ -110,7 +114,7 @@ $prefix4 = substr($cardno, 0, 4); // Card number's prefix (4dgt)
 
 $i = 2;
 
-//QUERY DB
+//QUERY DB, PREFIX ++
 while (empty($row)) {
     $prefix = substr($cardno, 0, $i);
     $result = db_query($mysqli, $prefix, $digits);
@@ -118,6 +122,66 @@ while (empty($row)) {
     $i++;
 }
 
+if ($digits == 14) {
+    if ($row['id'] == 68 || $row['id'] == 69 || $row['id'] == 70 || $row['id'] == 71 || $row['id'] == 72 || $row['id'] == 73) { //CARTE BLANCHE
+        $part1 = substr($cardno, 0, 3);
+        $part2 = substr($cardno, 3, 4);
+        $part3 = substr($cardno, 7, 4);
+        $part4 = substr($cardno, 11, 4);
+    }
+    else {
+        $part1 = substr($cardno, 0, 2);
+        $part2 = substr($cardno, 2, 4);
+        $part3 = substr($cardno, 6, 4);
+        $part4 = substr($cardno, 10, 4);
+    }
+}
+else if ($digits ==  15) {
+    if ($row['id'] == 56 || $row['id'] == 57 || $row['id'] == 45 || $row['id'] == 46 || $row['id'] == 23 || $row['id'] == 74 || $row['id'] == 75) { // VOYAGER / AMEX / EN ROUTE / JCB CO INC 15
+        $part1 = substr($cardno, 0, 4);
+        $part2 = substr($cardno, 4, 4);
+        $part3 = substr($cardno, 8, 4);
+        $part4 = substr($cardno, 12, 3);
+    }
+    else {
+        $part1 = substr($cardno, 0, 3);
+        $part2 = substr($cardno, 3, 4);
+        $part3 = substr($cardno, 7, 4);
+        $part4 = substr($cardno, 11, 4);
+    }
+}
+else if ($digits == 16) {
+    $part1 = substr($cardno, 0, 4);
+    $part2 = substr($cardno, 4, 4);
+    $part3 = substr($cardno, 8, 4);
+    $part4 = substr($cardno, 12, 4);
+}
+else if ($digits == 17) {
+    $part1 = substr($cardno, 0, 1);
+    $part2 = substr($cardno, 1, 4);
+    $part3 = substr($cardno, 5, 4);
+    $part4 = substr($cardno, 9, 4);
+    $part5 = substr($cardno, 13, 4);
+}
+else if ($digits == 18) {
+    $part1 = substr($cardno, 0, 2);
+    $part2 = substr($cardno, 2, 4);
+    $part3 = substr($cardno, 6, 4);
+    $part4 = substr($cardno, 10, 4);
+    $part5 = substr($cardno, 14, 4);
+}
+else if ($digits == 19) {
+    $part1 = substr($cardno, 0, 4);
+    $part2 = substr($cardno, 4, 4);
+    $part3 = substr($cardno, 8, 4);
+    $part4 = substr($cardno, 12, 4);
+    $part5 = substr($cardno, 16, 3);
+}
+
+$formatNo = $part1.'-'.$part2.'-'.$part3.'-'.$part4;
+
+if (isset($part5))
+    $formatNo .= '-'.$part5;
 
 $luhnDgt = substr($cardno, -1, 1); // Luhn Digit Check (last)
 
@@ -130,9 +194,9 @@ if ($digits < 1) {
 }
 
 
-    if(is_valid_luhn($cardno) == false || $result == false) {
+    if(is_valid_luhn($cardno) == false) {
         ?>
-        <h3>xTODO</h3>
+        <h3><?= $formatNo ?></h3>
         <h3 class="alert alert-danger">
             <span class="glyphicon glyphicon-remove"></span> INVALID CARD NUMBER !</h3>
 
@@ -153,9 +217,9 @@ if ($digits < 1) {
             </div> -->
         <?php
     }
-    else if (is_valid_luhn($cardno) == true && $result != false) {
+    else if (is_valid_luhn($cardno) == true) {
         ?>
-        <h3>xTODO</h3>
+        <h3><?= $formatNo ?></h3>
         <h3  class="alert alert-success">
             <span class="glyphicon glyphicon-ok"></span>
             VALID CARD NUMBER !</h3>
@@ -182,7 +246,7 @@ if ($digits < 1) {
                                 </tr>
                                 <tr>
                                     <th><strong>Formatted : </strong></th>
-                                    <td>xTODO</td>
+                                    <td><?= $formatNo ?></td>
                                 </tr>
                                 <tr>
                                     <th><strong>Luhn Digit : </strong></th>
