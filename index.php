@@ -19,7 +19,7 @@ function db_query($mysqli, $prefix, $digits) {
     $query = "Select * FROM cards WHERE prefix = ".$prefix." AND digits = ".$digits.";";
     $result = $mysqli->query($query);
 
-    return $result;
+        return $result;
 }
 
 
@@ -35,25 +35,7 @@ function is_valid_luhn($number) {
     }
     return $sum % 10 === 0;
 }
-$types = array (
-'visa' => array('4024', '4485', '4532', '4539', '4556', '4716', '4916', '4929'), /* 13 or 16 digits*/
-'visa Electron' => array('4026', '4175', '4508', '4844', '4913', '4917'), // 16 digits
-'voyager' => array('8699'), // 15 digits
-'master-Card' => array('51', '52', '53', '54', '55'), // 16 digits
-'laser (16 digits)' => array('6304', '6706', '6709', '6771'), // 16 digits
-'laser (17 digits)' => array('6304', '6706', '6709', '6771'), // 17 digits
-'laser (18 digits)' => array('6304', '6706', '6709', '6771'), // 18 digits
-'laser (19 digits)' => array('6304', '6706', '6709', '6771'), // 19 digits
-'jcb Co Inc (15 digits)' => array('1800', '2100'), // 15 digits
-'jcb Co Inc (16 digits)' => array('3088', '3096', '3112', '3158', '3337', '3528'), // 16 digits
-'instaPayment' => array('637', '638', '639'), // 16 digits
-'enRoute' => array('2014', '2149'), // 15 digits
-'discover' => array('6011', '644', '645', '646', '647', '649', '65'), // 16 digits
-'diner Club (USA & CA)' => array('54'), // 16 digits
-'diner Club (International)' => array('36', '38'), // 14 digits
-'diner Club (Carte Blanche)' => array('300', '301', '302', '303', '304', '305'), // 14 digits
-'american express' => array('34', '37'), // 15 digits
-)
+
 ?>
 
 <!DOCTYPE html>
@@ -128,20 +110,16 @@ $prefix4 = substr($cardno, 0, 4); // Card number's prefix (4dgt)
 
 //QUERY DB
 $result = db_query($mysqli, $prefix2, $digits);
-
 $row = $result->fetch_array(MYSQLI_BOTH);
-$row_cnt = $result->num_rows;
 
-
-
-
-
-
-$type='null';
-
-
-
-
+if (empty($row)) {
+    $result = db_query($mysqli, $prefix3, $digits);
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    if (empty($row)) {
+        $result = db_query($mysqli, $prefix4, $digits);
+        $row = $result->fetch_array(MYSQLI_BOTH);
+    }
+}
 
 $luhnDgt = substr($cardno, -1, 1); // Luhn Digit Check (last)
 
@@ -154,7 +132,7 @@ if ($digits < 1) {
 }
 
 
-    if(is_valid_luhn($cardno) == false) {
+    if(is_valid_luhn($cardno) == false || $result == false) {
         ?>
         <h3>xTODO</h3>
         <h3 class="alert alert-danger">
@@ -177,7 +155,7 @@ if ($digits < 1) {
             </div> -->
         <?php
     }
-    else if (is_valid_luhn($cardno) == true) {
+    else if (is_valid_luhn($cardno) == true && $result != false) {
         ?>
         <h3>xTODO</h3>
         <h3  class="alert alert-success">
