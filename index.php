@@ -42,14 +42,14 @@ function is_valid_luhn($number) {
 <html>
 <head>
     <title>CardVERIFIER</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
 
     <style>
         .starter-template {
-            margin-top: 70px;
+            margin-top: 150px;
         }
 
         body {
@@ -82,7 +82,7 @@ function is_valid_luhn($number) {
 <div class="container">
     <div class="starter-template">
 
-        <h2>VERIFY A CARD NUMBER NOW !</h2>
+        <h2 id="title">VERIFY A CARD NUMBER NOW !</h2>
         <br>
         <form class="form-group" method="post" action="<?= $_SERVER['PHP_SELF']?>">
             <label for="cardno">Enter the card number :</label>
