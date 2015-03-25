@@ -49,19 +49,16 @@ function is_valid_luhn($number) {
 
     <style>
         .starter-template {
-            margin-top: 150px;
+            margin-top: 90px;
         }
 
-        body {
-            font-family : "Lucida Sans Unicode", "Arial";
-        }
 
     </style>
     <meta charset="UTF-8">
 </head>
 
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-default"> <!-- inverse navbar-fixed-top -->
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed">
@@ -71,17 +68,38 @@ function is_valid_luhn($number) {
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="http://localhost/CardVERIFIER/index.php">Card VERIFIER</a>
+
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <!-- add some sections in navbar -->
             </ul>
         </div><!--/.nav-collapse -->
+
+    <div style="float:right; color:#fff;">
+        <?php
+        if (isset($_COOKIE['user'])) {
+            echo "Hello ".$_COOKIE['user'];
+        }
+        else {
+            echo "<a href='connection.php'>Login</a>";
+        }
+        ?>
+    </div>
+
     </div>
 </div>
+<div class="bg">
 <div class="container">
     <div class="starter-template">
-
+<?php
+if (isset($_COOKIE['user'])) {
+    echo $_COOKIE['user'];
+}
+else {
+    echo 'NOCOOKIES';
+}
+?>
         <h2 id="title">VERIFY A CARD NUMBER NOW !</h2>
         <br>
         <form class="form-group" method="post" action="<?= $_SERVER['PHP_SELF']?>">
@@ -270,5 +288,7 @@ if ($digits < 1) {
 ?>
     </div>
     </div>
+    </div>
+</div>
 </body>
 </html>
