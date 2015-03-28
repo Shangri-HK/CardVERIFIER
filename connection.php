@@ -9,13 +9,13 @@
             include('func.php');
 
 ?>
+
 <!DOCTYPE html>
 <html>
-            <?php include("header.php"); ?>
+<?php include("header.php"); ?>
 <body>
 
-
-            <form class="form-group" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+            <form class="form-group" action="index.php" method="post">
                 <div class="col-md-4">
                 <label for="username">Username :</label>
                 <input class="form-control" type="text" id="username" name="username" value="<?php echo (isset($_POST['username'])) ? $_POST['username'] : ''?>">
@@ -31,32 +31,7 @@
 
 <?php
 
-if (!empty($_POST['submit'])) {
-    $submit = $_POST['submit'];
-}
 
-if (isset($submit)) {
-    $username = $_POST['username'];
-    $pass = $_POST['pass'];
-
-    //CONNECTION DB
-    $mysqli = db_connect();
-
-    //TRY TO LOGIN
-    $result = login($mysqli, $username, $pass);
-    $row = $result->fetch_array(MYSQLI_BOTH);
-
-    if (!empty($row)) {
-        setcookie('user', $username, time()+3600);
-        setcookie('pass', $pass, time()+3600);
-        ?>
-         <meta http-equiv="refresh" content="0;URL=index.php">
-            <?php
-    } else {
-        $log = false;
-    }
-
-}
 ?>
         </div>
     </div>

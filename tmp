@@ -165,3 +165,40 @@ $formatNo = $part1.'-'.$part2.'-'.$part3.'-'.$part4;
 
 if (isset($part5))
     $formatNo .= '-'.$part5;
+
+    1.WebDEv
+    2.Java/Android
+    3.Python
+    4.Ruby
+    5.C/C++
+    6..NET Dev
+    7.OS X/iOS
+
+
+
+( ! ) Warning: Missing argument 2 for get_categ(), called in C:\wamp\www\CardVERIFIER\header.php on line 10 and defined in C:\wamp\www\CardVERIFIER\func.php on line 88
+Call Stack
+#	Time	Memory	Function	Location
+1	0.0010	143456	{main}( )	..\index.php:0
+2	0.0140	180584	include( 'C:\wamp\www\CardVERIFIER\header.php' )	..\index.php:37
+3	0.0150	186096	get_categ( )	..\header.php:10
+
+( ! ) Notice: Undefined variable: categ in C:\wamp\www\CardVERIFIER\func.php on line 90
+Call Stack
+#	Time	Memory	Function	Location
+1	0.0010	143456	{main}( )	..\index.php:0
+2	0.0140	180584	include( 'C:\wamp\www\CardVERIFIER\header.php' )	..\index.php:37
+3	0.0150	186096	get_categ( )	..\header.php:10
+Card VERIFIER
+
+    admin
+    Products
+
+    Hello admin !(current)
+
+Products for Python
+PyCharm (JetBrains)
+Picture
+199 €
+
+Enjoy productive Python, Django, and Web development with PyCharm, an intelligent Python IDE offering unique coding experience.

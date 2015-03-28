@@ -14,5 +14,6 @@ $userId = $_GET['userId'];
 $mysqli = db_connect();
 
 addToCart($mysqli, $userId, $id);
-
 ?>
+
+<meta http-equiv="refresh" content="0;URL=index.php">

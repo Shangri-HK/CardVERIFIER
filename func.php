@@ -46,15 +46,50 @@ function db_query($mysqli, $prefix, $digits) {
     return $result;
 }
 
-function db_query_articles($mysqli) {
+function db_query_articles($mysqli, $categ) {
+
     $query = "SELECT * FROM products INNER JOIN merchants ON products.idMerch =  merchants.idMerch";
+    if ($categ != 0) {
+        $query .= " WHERE idCateg = ".$categ;
+    }
+
     $result = $mysqli->query($query);
 
     return $result;
 }
 
-function addToCart($mysqli, $userId, $id) {
-    $query = "INSERT INTO usercart (`idUser`, `storedProdId`) VALUES ('".$userId."', '".$id."');";
+function addToCart($mysqli, $userId, $idProd) {
+
+    $query = "SELECT * FROM usercart WHERE storedProdId = ".$idProd;
+    $result = $mysqli->query($query);
+    $nmrw = $result->num_rows;
+
+    if ($nmrw != 0) {
+        $query = "UPDATE usercart SET quantity = quantity + 1 WHERE storedProdId = ".$idProd." AND idUser = ".$userId;
+
+    }
+    else {
+        $query = "INSERT INTO usercart (`idUser`, `storedProdId`, `quantity`) VALUES ('" . $userId . "', '" . $idProd . "', '1');";
+    }
+
+    $result = $mysqli->query($query);
+
+    return $result;
+}
+
+function get_userCart($mysqli, $userId) {
+    $query = "SELECT * FROM usercart INNER JOIN products ON (usercart.storedProdId = products.idProd) INNER JOIN merchants ON (products.idMerch = merchants.idMerch) WHERE idUser = ".$userId;
+
+    $result = $mysqli->query($query);
+
+    return $result;
+}
+
+function get_categ($mysqli, $categ) {
+    $query = "SELECT * FROM categprod";
+    if ($categ != 0)
+        $query .= " WHERE idCateg = ".$categ;
+
     $result = $mysqli->query($query);
 
     return $result;
