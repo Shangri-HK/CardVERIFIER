@@ -16,14 +16,45 @@ function db_connect() {
 }
 
 function login($mysqli, $username, $pass) {
+    $pass = sha1($pass);
     $query = "SELECT * FROM users WHERE username = '".$username."' AND pass = '".$pass."';";
     $result = $mysqli->query($query);
 
     return $result;
 }
 
+function new_user($mysqli, $username, $pass) {
+    $hashedPass = sha1($pass);
+    $query = "INSERT INTO users (`id`, `username`, `pass`, `cart`) VALUES (NULL, '".$username."', '".$hashedPass."', NULL);";
+
+    $result = $mysqli->query($query);
+
+    return $result;
+}
+
+function get_userID($mysqli, $username) {
+    $query = "SELECT id FROM users WHERE username = '".$username."'";
+    $results = $mysqli->query($query);
+
+    return $results;
+}
+
 function db_query($mysqli, $prefix, $digits) {
     $query = "Select * FROM cards WHERE prefix = ".$prefix." AND digits = ".$digits.";";
+    $result = $mysqli->query($query);
+
+    return $result;
+}
+
+function db_query_articles($mysqli) {
+    $query = "SELECT * FROM products INNER JOIN merchants ON products.idMerch =  merchants.idMerch";
+    $result = $mysqli->query($query);
+
+    return $result;
+}
+
+function addToCart($mysqli, $userId, $id) {
+    $query = "INSERT INTO usercart (`idUser`, `storedProdId`) VALUES ('".$userId."', '".$id."');";
     $result = $mysqli->query($query);
 
     return $result;
@@ -41,4 +72,8 @@ function is_valid_luhn($number) {
         $sum += $sumTable[$flip++ & 0x1][$number[$i]];
     }
     return $sum % 10 === 0;
+}
+
+function logout () {
+    setcookie("user", "", time()-1);
 }
