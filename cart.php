@@ -17,6 +17,25 @@ if (isset($_COOKIE['user'])) {
 
     $result = get_userCart($mysqli, $userId);
 }
+//DELETE = 0 & IDPROD=X : Drop all articles for 1 IDPROD
+//DELETE = all : Drop all
+//DELETE isset AND != 0 AND != all & IDPROD = X : Drop 1 article for 1 IDPROD
+if (isset($_GET['delete'])) {
+    if ($_GET['delete'] == '0') {
+        $idProd = $_GET['idProd'];
+        drop_multiArtCart($mysqli, $userId, $idProd);
+    }
+    else if ($_GET['delete'] == 'all') {
+        drop_allArt($mysqli, $userId);
+    }
+    else if ($_GET['delete'] != 0 && $_GET['delete'] != 'all') {
+        $idProd = $_GET['delete'];
+        drop_oneArt($mysqli, $userId, $idProd);
+    }
+    ?>
+    <meta http-equiv="refresh" content="0;URL=cart.php">
+<?php
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,9 +48,9 @@ if (isset($_COOKIE['user'])) {
         <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> PURCHASE CART
     </button>
 
-    <button style="float: right" class="btn btn-danger btn-lg">
+    <a style="float: right" href="cart.php?delete=all" class="btn btn-danger btn-lg">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> RESET CART
-    </button>
+    </a>
 <hr>
     <br>
     <br>
@@ -65,15 +84,15 @@ if (isset($_COOKIE['user'])) {
                 <tr style="height: 75px">
                 <td><button style="float: left" disabled>Quantity : <?= $row['quantity'] ?></button>
 
-                    <button style="float: right" type="button" class="btn btn-default btn-sm">
+                    <a style="float: right" href="cart.php?delete=0&idProd=<?= $row['idProd'] ?>" type="button" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
+                    </a>
 
-                    <button style="float : right" type="button" class="btn btn-default btn-sm">
+                    <a style="float : right" type="button" href="cart.php?delete=<?= $row['idProd'] ?>" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
+                    </a>
                 </td>
 
 

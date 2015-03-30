@@ -85,6 +85,32 @@ function get_userCart($mysqli, $userId) {
     return $result;
 }
 
+function drop_userCart($mysqli, $userId) {
+    $query = "DELETE FROM usercart WHERE idUser = ".$userId;
+    $result = $mysqli->query($query);
+}
+
+function drop_multiArtCart($mysqli, $userId, $idProd) {
+    $query = "DELETE FROM usercart WHERE idUser = ".$userId." AND storedProdId = ".$idProd;
+    $result = $mysqli->query($query);
+}
+
+function drop_oneArt($mysqli, $userId, $idProd) {
+    $query = "UPDATE usercart SET quantity = quantity - 1 WHERE storedProdId = ".$idProd." AND idUser = ".$userId;
+    $result = $mysqli->query($query);
+    $query = "SELECT * FROM usercart WHERE storedProdId = ".$idProd;
+    $result = $mysqli->query($query);
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    if ($row['quantity'] == 0) {
+        drop_multiArtCart($mysqli, $userId, $idProd);
+    }
+}
+
+function drop_allArt($mysqli, $userId) {
+    $query = "DELETE FROM usercart WHERE idUser = ".$userId;
+    $result = $mysqli->query($query);
+}
+
 function get_categ($mysqli, $categ) {
     $query = "SELECT * FROM categprod";
     if ($categ != 0)

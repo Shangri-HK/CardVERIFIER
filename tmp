@@ -176,19 +176,11 @@ if (isset($part5))
 
 
 
-( ! ) Warning: Missing argument 2 for get_categ(), called in C:\wamp\www\CardVERIFIER\header.php on line 10 and defined in C:\wamp\www\CardVERIFIER\func.php on line 88
-Call Stack
-#	Time	Memory	Function	Location
-1	0.0010	143456	{main}( )	..\index.php:0
-2	0.0140	180584	include( 'C:\wamp\www\CardVERIFIER\header.php' )	..\index.php:37
-3	0.0150	186096	get_categ( )	..\header.php:10
 
-( ! ) Notice: Undefined variable: categ in C:\wamp\www\CardVERIFIER\func.php on line 90
+( ! ) Notice: Undefined index: idProd in C:\wamp\www\CardVERIFIER\cart.php on line 25
 Call Stack
 #	Time	Memory	Function	Location
-1	0.0010	143456	{main}( )	..\index.php:0
-2	0.0140	180584	include( 'C:\wamp\www\CardVERIFIER\header.php' )	..\index.php:37
-3	0.0150	186096	get_categ( )	..\header.php:10
+1	0.0000	144056	{main}( )	..\cart.php:0
 Card VERIFIER
 
     admin
@@ -196,7 +188,20 @@ Card VERIFIER
 
     Hello admin !(current)
 
-Products for Python
+
+
+AppCode (JetBrains)
+Picture
+199 €
+
+Turn your bright ideas into outstanding iOS/OS X apps with ease and pleasure. Rely on AppCode's intelligent assistance as you code, refactor, debug and test.
+
+PHPStorm (JetBrains)
+Picture
+199 €
+
+Enjoy productive PHP and web development with PhpStorm. Take advantage of deep code understanding, top-notch coding assistance, and support for all major tools and frameworks.
+
 PyCharm (JetBrains)
 Picture
 199 €
