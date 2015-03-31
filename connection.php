@@ -8,12 +8,23 @@
 
             include('func.php');
 
+if (isset($_GET['fromreg']) && $_GET['fromreg'] == '1') {
+    $fromreg = true;
+}
+else
+    $fromreg = false;
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <?php include("header.php"); ?>
 <body>
+
+<?php if ($fromreg) {
+    echo 'Nouveau ? Merci de vous être inscrit !';
+}
+?>
 
             <form class="form-group" action="index.php" method="post">
                 <div class="col-md-4">

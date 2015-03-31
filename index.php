@@ -82,7 +82,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
                 <tr style="height: 100px">
                     <td><img style="float: left" class="img-thumbnail" src="<?= $row['img'] ?>" alt="Picture" width="100" height="100">
 
-                        <h1><?= $row['price'] ?> €</h1></td>
+                        <h1><?php echo ($row['price']) ? $row['price'].' €' : 'Free' ?> </h1></td>
                 </tr>
 
                 <tr style="height: 100px">

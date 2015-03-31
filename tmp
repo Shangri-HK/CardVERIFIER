@@ -178,3 +178,17 @@ if (isset($part5))
 
 SELECT SUM(price * quantity) FROM products INNER JOIN usercart ON (products.idProd = usercart.storedProdId)
 WHERE idUser = 4
+
+
+( ! ) Notice: Undefined index: formreg in C:\wamp\www\CardVERIFIER\connection.php on line 11
+Call Stack
+#	Time	Memory	Function	Location
+1	0.0000	254136	{main}( )	..\connection.php:0
+Card VERIFIER
+
+    admin
+    Products
+
+    Hello admin !(current)
+
+Username : Password :

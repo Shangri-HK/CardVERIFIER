@@ -57,7 +57,7 @@ $categs = get_categ($mysqli, 0);
                 <li class="dropdown-open">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"><?php echo (isset($_COOKIE['user'])) ? $_COOKIE['user'] : 'Not connected' ?><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <?php echo (isset($_COOKIE['user'])) ? '<li><a href="#">My account</a></li>
+                        <?php echo (isset($_COOKIE['user'])) ? '<li><a href="account.php">My account</a></li>
                                                             <li><a href="cart.php">My Cart</a></li>
                                                             <li class="divider"></li>
                                                             <li><a href="logout.php">Disconnect</a></li>

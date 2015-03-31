@@ -33,6 +33,13 @@ function new_user($mysqli, $username, $pass, $email, $fname, $lname, $address1, 
     return $result;
 }
 
+function update_user($mysqli, $userId, $username, $pass, $email, $fname, $lname, $address1, $address2, $city, $country, $postalCode, $tel) {
+    $hashedPass= sha1($pass);
+    $query = "UPDATE users SET pass = '".$hashedPass."', email = '".$email."', fname = '".$fname."', lname = '".$lname."', address1 = '".$address1."', address2 = '".$address2."', city = '".$city."', country = '".$country."', postalCode = '".$postalCode."', tel = '".$tel."' WHERE id = ".$userId;
+
+    $result = $mysqli->query($query);
+}
+
 function get_userID($mysqli, $username) {
     $query = "SELECT id FROM users WHERE username = '".$username."'";
     $results = $mysqli->query($query);
