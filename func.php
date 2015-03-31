@@ -23,9 +23,10 @@ function login($mysqli, $username, $pass) {
     return $result;
 }
 
-function new_user($mysqli, $username, $pass) {
+function new_user($mysqli, $username, $pass, $email, $fname, $lname, $address1, $address2, $city, $country, $postalCode, $tel) {
     $hashedPass = sha1($pass);
-    $query = "INSERT INTO users (`id`, `username`, `pass`, `cart`) VALUES (NULL, '".$username."', '".$hashedPass."', NULL);";
+    $query = "INSERT INTO users (`id`, `username`, `pass`, `email`, `fname`, `lname`, `address1`, `address2`, `city`, `country`, `postalCode`, `tel`)
+              VALUES (NULL, '".$username."', '".$hashedPass."', '".$email."', '".$fname."', '".$lname."', '".$address1."', '".$address2."', '".$city."', '".$country."', '".$postalCode."', '".$tel."')";
 
     $result = $mysqli->query($query);
 
@@ -37,6 +38,13 @@ function get_userID($mysqli, $username) {
     $results = $mysqli->query($query);
 
     return $results;
+}
+
+function get_userInfo($mysqli, $userId) {
+    $query = "SELECT * FROM users WHERE id = ".$userId;
+    $result = $mysqli->query($query);
+
+    return $result;
 }
 
 function db_query($mysqli, $prefix, $digits) {
@@ -121,6 +129,15 @@ function get_categ($mysqli, $categ) {
     return $result;
 }
 
+function get_priceCart($mysqli, $userId) {
+    $query = "SELECT SUM(price * quantity) AS total FROM products INNER JOIN usercart ON (products.idProd = usercart.storedProdId)
+WHERE idUser = ".$userId;
+    $result = $mysqli->query($query);
+
+    $total = $result->fetch_array(MYSQLI_BOTH);
+
+    return $total['total'];
+}
 
 function is_valid_luhn($number) {
     settype($number, 'string');

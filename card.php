@@ -15,13 +15,15 @@ include ('func.php');
 <body>
 <?php
 if (isset($_COOKIE['user'])) {
-    echo $_COOKIE['user'];
+    $userId = $_COOKIE['user'];
 }
-else {
-    echo 'NOCOOKIES';
-}
+
 ?>
-        <h2 id="title">VERIFY YOUR CARD NUMBER NOW !</h2>
+        <h2 id="title">Please, verify your card</h2>
+        <br>
+        <p style="font-style: italic; color: #CCC">In order to check your card type, & proceed to payment.</p>
+        <br>
+        <br>
         <br>
         <form class="form-group" method="post" action="<?= $_SERVER['PHP_SELF']?>">
             <label for="cardno">Enter the card number :</label>
@@ -61,6 +63,7 @@ while (empty($row)) {
     $i++;
 }
 
+//PARSING NUMBERS
 if ($digits == 14) {
     if ($row['id'] == 68 || $row['id'] == 69 || $row['id'] == 70 || $row['id'] == 71 || $row['id'] == 72 || $row['id'] == 73) { //CARTE BLANCHE
         $part1 = substr($cardno, 0, 3);
@@ -159,9 +162,13 @@ if ($digits < 1) {
     else if (is_valid_luhn($cardno) == true) {
         ?>
         <h3><?= $formatNo ?></h3>
+<hr>
         <h3  class="alert alert-success">
             <span class="glyphicon glyphicon-ok"></span>
             VALID CARD NUMBER !</h3>
+<hr>
+<a class="btn btn-lg btn-default" href="payment.php">Proceed >></a>
+<hr>
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">

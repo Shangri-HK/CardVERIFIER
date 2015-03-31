@@ -32,26 +32,41 @@ if (isset($_GET['delete'])) {
         $idProd = $_GET['delete'];
         drop_oneArt($mysqli, $userId, $idProd);
     }
-    ?>
-    <meta http-equiv="refresh" content="0;URL=cart.php">
-<?php
+
+    echo '<meta http-equiv="refresh" content="0;URL=cart.php">';
 }
+
+if (isset($_GET['idProd'])) {
+    $idProd = $_GET['idProd'];
+    addToCart($mysqli, $userId, $idProd);
+    echo '<meta http-equiv="refresh" content="0;URL=cart.php">';
+}
+
+$totalPrice = get_priceCart($mysqli, $userId);
+
 ?>
 <!DOCTYPE html>
 <html>
+
+<!-- HEADER -->
 <?php include ('header.php'); ?>
-<body>
 
+<body onload="thousand_coma_total(<?= $totalPrice ?>)">
+<!-- TOP BUTTONS -->
 <div>
-<hr>
-    <button class="btn btn-primary btn-lg">
+    <hr>
+    <a class="btn btn-primary btn-lg" style="float: left" href="card.php">
         <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> PURCHASE CART
-    </button>
+    </a>
 
-    <a style="float: right" href="cart.php?delete=all" class="btn btn-danger btn-lg">
+
+    <a style="margin-left: 8px" href="cart.php?delete=all" class="btn btn-danger btn-lg">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> RESET CART
     </a>
+    <a class="btn btn-lg btn-default" id="totalCart" disabled style="float: right;"></a>
 <hr>
+
+    <!-- ARTICLES -->
     <br>
     <br>
 
@@ -78,7 +93,7 @@ if (isset($_GET['delete'])) {
                 </tr>
 
                 <tr style="height: 100px">
-                    <td><p style="font-style: italic; text-align: justify;"><?= $row['Desc'] ?></p></td>
+                    <td><p style="font-style: italic; text-align: justify;"><?= substr($row['Desc'], 0, 150) ?>...</p></td>
                 </tr>
 
                 <tr style="height: 75px">
@@ -114,6 +129,13 @@ if (isset($_GET['delete'])) {
 
 
 </div>
+
+<script type="text/javascript">
+    function thousand_coma_total(total) {
+        total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById("totalCart").innerHTML = "Total : "+total+" €";
+    }
+</script>
 
 </body>
 </html>

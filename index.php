@@ -62,7 +62,7 @@ if (isset($_COOKIE['user'])) {
 <body>
 <div>
     <hr>
-    <h2>Products <?php echo (isset($categlbl)) ? ' for '.$categlbl : '' ?></h2>
+    <h2 style="text-align: center">Products <?php echo (isset($categlbl)) ? ' - '.$categlbl : '' ?></h2>
     <hr>
 <table>
     <tr>
@@ -93,7 +93,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
                     <td><a style="float:left;" target="_blank" class="btn btn-default btn-md" href="<?= $row['website'] ?>"><?= $row['NameMerch'] ?></a>
     <?php
     if (isset($_COOKIE['user'])) {
-                      ?><a class="btn btn-default btn-lg" href="addtocart.php?id=<?= $row['idProd'] ?>&userId=<?php echo (isset($_COOKIE['user'])) ? $rowUser['id'] : '' ?>">Add to Cart!</a><?php
+                      ?><a class="btn btn-default btn-lg" href="cart.php?idProd=<?= $row['idProd'] ?>">Add to Cart!</a><?php
  } ?>
                         <a style="float:right;" target="_blank" class="btn btn-default btn-md" href="<?= $row['ProdWebsite'] ?>"><?=  substr($row['Name'], 0, 15) ?></a></td>
                 </tr>
@@ -115,3 +115,4 @@ if ($i > 2) {
     </div>
 </body>
 </html>
+

@@ -176,34 +176,5 @@ if (isset($part5))
 
 
 
-
-( ! ) Notice: Undefined index: idProd in C:\wamp\www\CardVERIFIER\cart.php on line 25
-Call Stack
-#	Time	Memory	Function	Location
-1	0.0000	144056	{main}( )	..\cart.php:0
-Card VERIFIER
-
-    admin
-    Products
-
-    Hello admin !(current)
-
-
-
-AppCode (JetBrains)
-Picture
-199 €
-
-Turn your bright ideas into outstanding iOS/OS X apps with ease and pleasure. Rely on AppCode's intelligent assistance as you code, refactor, debug and test.
-
-PHPStorm (JetBrains)
-Picture
-199 €
-
-Enjoy productive PHP and web development with PhpStorm. Take advantage of deep code understanding, top-notch coding assistance, and support for all major tools and frameworks.
-
-PyCharm (JetBrains)
-Picture
-199 €
-
-Enjoy productive Python, Django, and Web development with PyCharm, an intelligent Python IDE offering unique coding experience.
+SELECT SUM(price * quantity) FROM products INNER JOIN usercart ON (products.idProd = usercart.storedProdId)
+WHERE idUser = 4

@@ -85,7 +85,7 @@ $categs = get_categ($mysqli, 0);
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                echo (isset($_COOKIE['user'])) ? '<li class="active"><a href="./">Hello '.$_COOKIE["user"].' !<span class="sr-only">(current)</span></a></li>' : '<li><a href="../navbar/">Default</a></li>';
+                echo (isset($_COOKIE['user'])) ? '<li class="active"><a>Hello '.$_COOKIE["user"].' !<span class="sr-only">(current)</span></a></li>' : '<li><a href="../navbar/">Default</a></li>';
                 ?>
 
 
