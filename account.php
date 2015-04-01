@@ -33,7 +33,7 @@ else
 <?php include ('header.php'); ?>
 
 <body>
-
+<?php echo ($update) ? '<p class="alert alert-info">Your account have been updated</p>' : '' ?>
 <hr>
 
 <h1>My Account</h1>

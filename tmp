@@ -165,7 +165,7 @@ $formatNo = $part1.'-'.$part2.'-'.$part3.'-'.$part4;
 
 if (isset($part5))
     $formatNo .= '-'.$part5;
-
+TYPES
     1.WebDEv
     2.Java/Android
     3.Python
@@ -173,7 +173,17 @@ if (isset($part5))
     5.C/C++
     6..NET Dev
     7.OS X/iOS
-
+    15.Code Editors
+MERCHANTS
+    1.JetBrains
+    2.Aptana
+    3.SublimeText
+    4.GitHub
+    5.NotePad++
+    6.Microsoft
+    7.IDM Computer Solutions
+    8.KomodoIDE
+    9.Eclipse
 
 
 SELECT SUM(price * quantity) FROM products INNER JOIN usercart ON (products.idProd = usercart.storedProdId)
@@ -192,3 +202,5 @@ Card VERIFIER
     Hello admin !(current)
 
 Username : Password :
+
+

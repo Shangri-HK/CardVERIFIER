@@ -22,7 +22,10 @@ else
 <body>
 
 <?php if ($fromreg) {
-    echo 'Nouveau ? Merci de vous être inscrit !';
+    echo '<p class="alert alert-info">New ? Thanks for subscription ! (:</p>';
+}
+if (isset($_GET['log']) && $_GET['log'] == '0') {
+    echo '<p class="alert alert-danger">Bad Username/Password ! </p>';
 }
 ?>
 

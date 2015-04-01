@@ -33,13 +33,13 @@ if (isset($_GET['delete'])) {
         drop_oneArt($mysqli, $userId, $idProd);
     }
 
-    echo '<meta http-equiv="refresh" content="0;URL=cart.php">';
+    echo '<meta http-equiv="refresh" content="0;URL=cart.php?deleted=1">';
 }
 
-if (isset($_GET['idProd'])) {
-    $idProd = $_GET['idProd'];
+if (isset($_GET['addIdProd'])) {
+    $idProd = $_GET['addIdProd'];
     addToCart($mysqli, $userId, $idProd);
-    echo '<meta http-equiv="refresh" content="0;URL=cart.php">';
+    echo '<meta http-equiv="refresh" content="0;URL=cart.php?added=1">';
 }
 
 $totalPrice = get_priceCart($mysqli, $userId);
@@ -55,16 +55,19 @@ $totalPrice = get_priceCart($mysqli, $userId);
 <!-- TOP BUTTONS -->
 <div>
     <hr>
-    <a class="btn btn-primary btn-lg" style="float: left" href="card.php">
+    <a class="btn btn-primary btn-lg" style="float: left" href="card.php" title="Continue to payment">
         <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> PURCHASE CART
     </a>
 
 
-    <a style="margin-left: 8px" href="cart.php?delete=all" class="btn btn-danger btn-lg">
+    <a style="margin-left: 8px" href="cart.php?delete=all" class="btn btn-danger btn-lg" title="Delete all content from your cart">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> RESET CART
     </a>
     <a class="btn btn-lg btn-default" id="totalCart" disabled style="float: right;"></a>
 <hr>
+
+    <?php echo (isset($_GET['added']) && $_GET['added'] == '1') ? '<p class="alert alert-info"><span class="glyphicon glyphicon-ok"></span> 1 article have been added</p>' : '';
+            echo (isset($_GET['deleted']) && $_GET['deleted'] == '1') ? '<p class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span> 1 or more articles have been deleted</p>' : '' ?>
 
     <!-- ARTICLES -->
     <br>
@@ -89,7 +92,7 @@ $totalPrice = get_priceCart($mysqli, $userId);
                     <td><img style="float: left" class="img-thumbnail" src="<?= $row['img'] ?>" alt="Picture"
                              width="100" height="100">
 
-                        <h1><?= $row['price'] ?> €</h1></td>
+                        <h1><?php echo ($row['price']) ? $row['price'].' €' : ' Free' ?></h1></td>
                 </tr>
 
                 <tr style="height: 100px">
@@ -99,14 +102,18 @@ $totalPrice = get_priceCart($mysqli, $userId);
                 <tr style="height: 75px">
                 <td><button style="float: left" disabled>Quantity : <?= $row['quantity'] ?></button>
 
-                    <a style="float: right" href="cart.php?delete=0&idProd=<?= $row['idProd'] ?>" type="button" class="btn btn-default btn-sm">
+                    <a style="float: right; color: #d9534f" href="cart.php?delete=0&idProd=<?= $row['idProd'] ?>" type="button" class="btn btn-default btn-sm" title="Delete all for this product">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
 
-                    <a style="float : right" type="button" href="cart.php?delete=<?= $row['idProd'] ?>" class="btn btn-default btn-sm">
+                    <a style="float : right; margin-right: 5px; color: #d9534f" type="button" href="cart.php?delete=<?= $row['idProd'] ?>" class="btn btn-default btn-sm" title="Delete one">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+
+                    <a style="float :right; margin-right: 5px;" type="button" href="cart.php?addIdProd=<?= $row['idProd'] ?>" class="btn btn-default btn-sm" title="Add one">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
                 </td>
 

@@ -124,7 +124,7 @@ if (isset($submit)) {
             echo '<meta http-equiv="refresh" content="0;URL=connection.php?fromreg=1">';
         }
 
-        echo 'You are now registered ! You can now login here : <a href="connection.php">Login</a>';
+        //echo 'You are now registered ! You can now login here : <a href="connection.php">Login</a>';
     }
     else
         echo 'Passwords must match!';

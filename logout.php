@@ -14,7 +14,7 @@ logout();
     <html>
 <?php include('header.php'); ?>
 
-<meta http-equiv="refresh" content="0;URL=index.php">
+<meta http-equiv="refresh" content="2;URL=index.php">
 <body>
 <p>Disconnected. Redirecting...</p>
 </body>

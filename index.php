@@ -24,13 +24,14 @@ if (isset($submit)) {
     $row = $log->fetch_array(MYSQLI_BOTH);
 
     if (!empty($row)) {
-        setcookie('user', $username, time()+3600);
-        setcookie('pass', $pass, time()+3600);
+        setcookie('user', $username, time()+31556926);
+        setcookie('pass', $pass, time()+31556926);
         ?>
         <meta http-equiv="refresh" content="0;URL=index.php">
     <?php
     } else {
         $log = false;
+        echo '<meta http-equiv="refresh" content="0;URL=connection.php?log=0">';
     }
 
 }
@@ -90,12 +91,12 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
                 </tr>
 
                 <tr style="height: 70px">
-                    <td><a style="float:left;" target="_blank" class="btn btn-default btn-md" href="<?= $row['website'] ?>"><?= $row['NameMerch'] ?></a>
+                    <td><a style="float:left;" target="_blank" class="btn btn-default btn-md" href="<?= $row['website'] ?>" title="<?= $row['NameMerch'] ?> web site"> <?= substr($row['NameMerch'], 0, 10) ?></a>
     <?php
     if (isset($_COOKIE['user'])) {
-                      ?><a class="btn btn-default btn-lg" href="cart.php?idProd=<?= $row['idProd'] ?>">Add to Cart!</a><?php
+                      ?><a class="btn btn-default btn-lg" href="cart.php?addIdProd=<?= $row['idProd'] ?>" title="Add this article to your cart">Add to Cart!</a><?php
  } ?>
-                        <a style="float:right;" target="_blank" class="btn btn-default btn-md" href="<?= $row['ProdWebsite'] ?>"><?=  substr($row['Name'], 0, 15) ?></a></td>
+                        <a style="float:right;" target="_blank" class="btn btn-default btn-md" href="<?= $row['ProdWebsite'] ?>" title="<?= $row['Name'] ?> web page"><?=  substr($row['Name'], 0, 10)?></a></td>
                 </tr>
             </table>
         </article>
